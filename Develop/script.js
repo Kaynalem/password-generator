@@ -1,6 +1,70 @@
 // Assignment code here
+/*window.onload = function() {
+  document.getElementById('id').value = 'Your Secure Password';
+}*/
+function generatePassword() {
 
 
+  // ask the user length of password between 8 and 128 characters
+  var passwordLength = window.prompt("How many characters would you like your password to be? Please enter a number between 8 and 128.");
+
+  // convert input from string to integer
+  passwordLength = parseInt(passwordLength);
+
+  //check input is correct length
+  if (passwordLength < 8 || passwordLength > 128) {
+    window.alert("You need to provide a valid answer! Please enter a number between 8 and 128.");
+    generatePassword();
+  }
+  // validate at least one of the below character sets is selected
+  var passwordSelection = false;
+  //this will be the set of characters used in the generated password
+  var characterSet = '';
+  while (!passwordSelection) {
+    // ask the user if they want lowercase characters
+    var passwordLower = window.confirm("Do you want lowercase characters?");
+    if (passwordLower) {
+      characterSet += 'abcdefghijklmnopqrstuvwxyz';
+      passwordSelection = true;
+    }
+
+    // ask the user if they want uppercase characters
+    var passwordUpper = window.confirm("Do you want uppercase characters?");
+    if (passwordUpper) {
+      characterSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      passwordSelection = true;
+    }
+
+    // ask the user if they want numeric characters
+    var passwordNumeric = window.confirm("Do you want numbers?");
+    if (passwordNumeric) {
+      characterSet += '0123456789';
+      passwordSelection = true;
+    }
+
+    // ask the user if they want special characters
+    var passwordSpecial = window.confirm("Do you want special characters?");
+    if (passwordSpecial) {
+      characterSet += "!#$%&()*+,-./:;<=>?@[\]^_`{|}~"; //OWASP approved set ignoring space and quotes
+      passwordSelection = true;
+    }
+    
+    // if at least one of the above character sents is not selected restart questions at passwordLower
+    if (!passwordSelection) {
+      window.alert("At least one character option must be selected.");
+    }
+  }
+  // generates random password based on selections
+  var passwd = '';
+  
+  for(var i = 0; i < passwordLength; i++) {
+    var positionRandom = Math.floor(Math.random() * characterSet.length + 1); 
+
+    passwd += characterSet.charAt(positionRandom);
+  }
+  return passwd;
+
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
