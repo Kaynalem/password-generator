@@ -1,7 +1,5 @@
 // Assignment code here
-/*window.onload = function() {
-  document.getElementById('id').value = 'Your Secure Password';
-}*/
+
 function generatePassword() {
 
 
