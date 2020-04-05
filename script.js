@@ -2,18 +2,19 @@
 
 function generatePassword() {
 
-
   // ask the user length of password between 8 and 128 characters
   var passwordLength = window.prompt("How many characters would you like your password to be? Please enter a number between 8 and 128.");
 
   // convert input from string to integer
   passwordLength = parseInt(passwordLength);
 
-  //check input is correct length
-  if (passwordLength < 8 || passwordLength > 128) {
+  //check input meets requirements (number between 8 and 128)
+  while ((passwordLength < 8 || passwordLength > 128) || isNaN(passwordLength)) {
     window.alert("You need to provide a valid answer! Please enter a number between 8 and 128.");
-    generatePassword();
+    passwordLength = window.prompt("How many characters would you like your password to be? Please enter a number between 8 and 128.");
+    passwordLength = parseInt(passwordLength);
   }
+
   // validate at least one of the below character sets is selected
   var passwordSelection = false;
   //this will be the set of characters used in the generated password
@@ -43,7 +44,7 @@ function generatePassword() {
     // ask the user if they want special characters
     var passwordSpecial = window.confirm("Do you want special characters?");
     if (passwordSpecial) {
-      characterSet += "!#$%&()*+,-./:;<=>?@[\]^_`{|}~"; //OWASP approved set ignoring space and quotes
+      characterSet += "!#$%&()*+,-./:;<=>?@[\]^_`{|}~\"'"; //OWASP approved set ignoring space
       passwordSelection = true;
     }
     
@@ -54,9 +55,9 @@ function generatePassword() {
   }
   // generates random password based on selections
   var passwd = '';
-  
+
   for(var i = 0; i < passwordLength; i++) {
-    var positionRandom = Math.floor(Math.random() * characterSet.length + 1); 
+    var positionRandom = Math.floor(Math.random() * characterSet.length); 
 
     passwd += characterSet.charAt(positionRandom);
   }
