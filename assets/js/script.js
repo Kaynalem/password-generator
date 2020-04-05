@@ -10,7 +10,6 @@ function generatePassword() {
 
   //check input meets requirements (number between 8 and 128)
   while ((passwordLength < 8 || passwordLength > 128) || isNaN(passwordLength)) {
-    //window.alert here was being used, but was not showing in Chrome on live site. Using confirm for compatibility.
     window.alert("You need to provide a valid answer! Please enter a number between 8 and 128.");
     passwordLength = window.prompt("How many characters would you like your password to be? Please enter a number between 8 and 128.");
     passwordLength = parseInt(passwordLength);
@@ -30,7 +29,6 @@ function generatePassword() {
   var upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var numbers = '0123456789';
   var specials = "!#$%&()*+,-./:;<=>?@[\]^_`{|}~\"'"; //OWASP approved set ignoring space
-
 
   while (!passwordSelection) {
     // ask the user if they want lowercase characters
@@ -61,10 +59,8 @@ function generatePassword() {
       passwordSelection = true;
     }
     
-    
     // if at least one of the above character sets is not selected restart questions at passwordLower
     if (!passwordSelection) {
-      //window.alert here was being used, but was not showing in Chrome on live site. Using confirm for compatibility.
       window.alert("At least one character option must be selected.");
     }
   }
