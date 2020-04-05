@@ -11,7 +11,7 @@ function generatePassword() {
   //check input meets requirements (number between 8 and 128)
   while ((passwordLength < 8 || passwordLength > 128) || isNaN(passwordLength)) {
     //window.alert here was being used, but was not showing in Chrome on live site. Using confirm for compatibility.
-    window.confirm("You need to provide a valid answer! Please enter a number between 8 and 128.");
+    window.alert("You need to provide a valid answer! Please enter a number between 8 and 128.");
     passwordLength = window.prompt("How many characters would you like your password to be? Please enter a number between 8 and 128.");
     passwordLength = parseInt(passwordLength);
   }
@@ -65,7 +65,7 @@ function generatePassword() {
     // if at least one of the above character sets is not selected restart questions at passwordLower
     if (!passwordSelection) {
       //window.alert here was being used, but was not showing in Chrome on live site. Using confirm for compatibility.
-      window.confirm("At least one character option must be selected.");
+      window.alert("At least one character option must be selected.");
     }
   }
 
