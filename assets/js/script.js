@@ -49,7 +49,7 @@ function generatePassword() {
       passwordSelection = true;
     }
     
-    console.log("The value of passwordSelection is: " + passwordSelection);
+    
     // if at least one of the above character sents is not selected restart questions at passwordLower
     if (!passwordSelection) {
       //window.alert here was being used, but was not showing in Chrome on live site. Using confirm for compatibility.
